@@ -128,16 +128,17 @@ jobs:
       - name: Publish library
         if: success()
         run: |
-          set -e
+          set -x
           mkdir -p ci-artifacts
-          find slam/build -name 'libk40_slam.so' -exec cp {} ci-artifacts/ \;
+          find "$GITHUB_WORKSPACE/slam/build" -name 'libk40_slam.so' -print
+          cp "$GITHUB_WORKSPACE/slam/build/lib/libk40_slam.so" ci-artifacts/libk40_slam.so
           ls -la ci-artifacts
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B ci-orbslam3-bin
           git add -f ci-artifacts/libk40_slam.so
-          git commit -m "libk40_slam.so: run ${{ github.run_number }}" || true
-          git push origin HEAD:refs/heads/ci-orbslam3-bin --force || true
+          git commit -m "libk40_slam.so run ${{ github.run_number }}" || echo "commit did not happen"
+          git push origin HEAD:refs/heads/ci-orbslam3-bin --force || echo "push failed"
 
       # 把构建日志推回仓库，方便直接读取失败原因而不必打开网页日志。
       - name: Publish build log
