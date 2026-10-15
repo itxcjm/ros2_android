@@ -177,6 +177,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B ci-orbslam3-log
-          git add -f build-report.md
+          git add -f build-report.md slam/build.log slam/configure.log
           git commit -m "build report: ${{ github.run_number }}" || true
           git push origin HEAD:refs/heads/ci-orbslam3-log --force || true
