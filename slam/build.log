@@ -1,0 +1,123 @@
+[  1%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Atlas.cc.o
+[  3%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/CameraModels/KannalaBrandt8.cpp.o
+[  4%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/CameraModels/Pinhole.cpp.o
+[  6%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Config.cc.o
+[  7%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Converter.cc.o
+[  9%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Frame.cc.o
+[ 10%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/FrameDrawer.cc.o
+[ 12%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/G2oTypes.cc.o
+[ 13%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/GeometricTools.cc.o
+[ 15%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/ImuTypes.cc.o
+[ 16%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/KeyFrame.cc.o
+[ 18%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/KeyFrameDatabase.cc.o
+[ 20%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/LocalMapping.cc.o
+[ 21%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/LoopClosing.cc.o
+[ 23%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Map.cc.o
+[ 24%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/MapPoint.cc.o
+[ 26%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/ORBextractor.cc.o
+[ 27%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/ORBmatcher.cc.o
+[ 29%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o
+[ 30%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Settings.cc.o
+[ 32%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Sim3Solver.cc.o
+[ 33%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/System.cc.o
+[ 35%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Tracking.cc.o
+[ 36%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/TwoViewReconstruction.cc.o
+[ 38%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/batch_stats.cpp.o
+[ 40%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/cache.cpp.o
+[ 41%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/estimate_propagator.cpp.o
+[ 43%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/factory.cpp.o
+[ 44%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/hyper_dijkstra.cpp.o
+[ 46%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/hyper_graph.cpp.o
+[ 47%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/hyper_graph_action.cpp.o
+[ 49%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/jacobian_workspace.cpp.o
+[ 50%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/marginal_covariance_cholesky.cpp.o
+[ 52%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/matrix_structure.cpp.o
+[ 53%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/optimizable_graph.cpp.o
+[ 55%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/optimization_algorithm.cpp.o
+[ 56%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/optimization_algorithm_dogleg.cpp.o
+[ 58%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/optimization_algorithm_factory.cpp.o
+[ 60%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/optimization_algorithm_gauss_newton.cpp.o
+[ 61%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/optimization_algorithm_levenberg.cpp.o
+[ 63%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/optimization_algorithm_with_hessian.cpp.o
+[ 64%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/parameter.cpp.o
+[ 66%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/parameter_container.cpp.o
+[ 67%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/robust_kernel.cpp.o
+[ 69%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/robust_kernel_factory.cpp.o
+[ 70%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/robust_kernel_impl.cpp.o
+[ 72%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/solver.cpp.o
+[ 73%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/sparse_block_matrix_test.cpp.o
+[ 75%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/core/sparse_optimizer.cpp.o
+[ 76%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/stuff/property.cpp.o
+[ 78%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/stuff/string_tools.cpp.o
+[ 80%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/stuff/timeutil.cpp.o
+[ 81%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/types/se3mat.cpp.o
+[ 83%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/types/types_sba.cpp.o
+[ 84%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp.o
+[ 86%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp.o
+[ 87%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/DBoW2/DBoW2/BowVector.cpp.o
+[ 89%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/DBoW2/DBoW2/FORB.cpp.o
+[ 90%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/DBoW2/DBoW2/FeatureVector.cpp.o
+[ 92%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/DBoW2/DBoW2/ScoringObject.cpp.o
+[ 93%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/DBoW2/DUtils/Random.cpp.o
+[ 95%] Building CXX object CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/Thirdparty/DBoW2/DUtils/Timestamp.cpp.o
+[ 96%] Building CXX object CMakeFiles/k40_slam.dir/stub_no_viewer.cc.o
+[ 98%] Building CXX object CMakeFiles/k40_slam.dir/k40_slam_jni.cc.o
+[100%] Linking CXX shared library lib/libk40_slam.so
+ld: error: undefined symbol: ORB_SLAM3::EdgeSE3ProjectXYZ::EdgeSE3ProjectXYZ()
+>>> referenced by Optimizer.cc:169 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:169)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::BundleAdjustment(std::__ndk1::vector<ORB_SLAM3::KeyFrame*, std::__ndk1::allocator<ORB_SLAM3::KeyFrame*> > const&, std::__ndk1::vector<ORB_SLAM3::MapPoint*, std::__ndk1::allocator<ORB_SLAM3::MapPoint*> > const&, int, bool*, unsigned long, bool))
+>>> referenced by Optimizer.cc:1311 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:1311)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::LocalBundleAdjustment(ORB_SLAM3::KeyFrame*, bool*, ORB_SLAM3::Map*, int&, int&, int&, int&))
+>>> referenced by Optimizer.cc:3660 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:3660)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::LocalBundleAdjustment(ORB_SLAM3::KeyFrame*, std::__ndk1::vector<ORB_SLAM3::KeyFrame*, std::__ndk1::allocator<ORB_SLAM3::KeyFrame*> >, std::__ndk1::vector<ORB_SLAM3::KeyFrame*, std::__ndk1::allocator<ORB_SLAM3::KeyFrame*> >, bool*))
+
+ld: error: undefined symbol: ORB_SLAM3::EdgeSE3ProjectXYZToBody::EdgeSE3ProjectXYZToBody()
+>>> referenced by Optimizer.cc:239 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:239)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::BundleAdjustment(std::__ndk1::vector<ORB_SLAM3::KeyFrame*, std::__ndk1::allocator<ORB_SLAM3::KeyFrame*> > const&, std::__ndk1::vector<ORB_SLAM3::MapPoint*, std::__ndk1::allocator<ORB_SLAM3::MapPoint*> > const&, int, bool*, unsigned long, bool))
+>>> referenced by Optimizer.cc:1376 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:1376)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::LocalBundleAdjustment(ORB_SLAM3::KeyFrame*, bool*, ORB_SLAM3::Map*, int&, int&, int&, int&))
+
+ld: error: undefined symbol: vtable for ORB_SLAM3::EdgeSE3ProjectXYZOnlyPose
+>>> referenced by Optimizer.cc:0 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:0)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::PoseOptimization(ORB_SLAM3::Frame*))
+>>> referenced by Optimizer.cc:0 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:0)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::PoseOptimization(ORB_SLAM3::Frame*))
+>>> referenced by OptimizableTypes.h:35 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/include/OptimizableTypes.h:35)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::PoseOptimization(ORB_SLAM3::Frame*))
+>>> referenced 1 more times
+>>> the vtable symbol may be undefined because the class is missing its key function (see https://lld.llvm.org/missingkeyfunction)
+
+ld: error: undefined symbol: vtable for ORB_SLAM3::EdgeSE3ProjectXYZOnlyPoseToBody
+>>> referenced by Optimizer.cc:0 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:0)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::PoseOptimization(ORB_SLAM3::Frame*))
+>>> referenced by Optimizer.cc:0 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:0)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::PoseOptimization(ORB_SLAM3::Frame*))
+>>> the vtable symbol may be undefined because the class is missing its key function (see https://lld.llvm.org/missingkeyfunction)
+
+ld: error: undefined symbol: ORB_SLAM3::VertexSim3Expmap::VertexSim3Expmap()
+>>> referenced by Optimizer.cc:2135 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:2135)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::OptimizeSim3(ORB_SLAM3::KeyFrame*, ORB_SLAM3::KeyFrame*, std::__ndk1::vector<ORB_SLAM3::MapPoint*, std::__ndk1::allocator<ORB_SLAM3::MapPoint*> >&, g2o::Sim3&, float, bool, Eigen::Matrix<double, 7, 7, 0, 7, 7>&, bool))
+
+ld: error: undefined symbol: ORB_SLAM3::EdgeSim3ProjectXYZ::EdgeSim3ProjectXYZ()
+>>> referenced by Optimizer.cc:2248 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:2248)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::OptimizeSim3(ORB_SLAM3::KeyFrame*, ORB_SLAM3::KeyFrame*, std::__ndk1::vector<ORB_SLAM3::MapPoint*, std::__ndk1::allocator<ORB_SLAM3::MapPoint*> >&, g2o::Sim3&, float, bool, Eigen::Matrix<double, 7, 7, 0, 7, 7>&, bool))
+
+ld: error: undefined symbol: ORB_SLAM3::EdgeInverseSim3ProjectXYZ::EdgeInverseSim3ProjectXYZ()
+>>> referenced by Optimizer.cc:2286 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc:2286)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Optimizer.cc.o:(ORB_SLAM3::Optimizer::OptimizeSim3(ORB_SLAM3::KeyFrame*, ORB_SLAM3::KeyFrame*, std::__ndk1::vector<ORB_SLAM3::MapPoint*, std::__ndk1::allocator<ORB_SLAM3::MapPoint*> >&, g2o::Sim3&, float, bool, Eigen::Matrix<double, 7, 7, 0, 7, 7>&, bool))
+
+ld: error: undefined symbol: ORB_SLAM3::MLPnPsolver::MLPnPsolver(ORB_SLAM3::Frame const&, std::__ndk1::vector<ORB_SLAM3::MapPoint*, std::__ndk1::allocator<ORB_SLAM3::MapPoint*> > const&)
+>>> referenced by Tracking.cc:3656 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Tracking.cc:3656)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Tracking.cc.o:(ORB_SLAM3::Tracking::Relocalization())
+
+ld: error: undefined symbol: ORB_SLAM3::MLPnPsolver::SetRansacParameters(double, int, int, int, float, float)
+>>> referenced by Tracking.cc:3657 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Tracking.cc:3657)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Tracking.cc.o:(ORB_SLAM3::Tracking::Relocalization())
+
+ld: error: undefined symbol: ORB_SLAM3::MLPnPsolver::iterate(int, bool&, std::__ndk1::vector<bool, std::__ndk1::allocator<bool> >&, int&, Eigen::Matrix<float, 4, 4, 0, 4, 4>&)
+>>> referenced by Tracking.cc:3683 (/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Tracking.cc:3683)
+>>>               CMakeFiles/k40_slam.dir/home/runner/work/ros2_android/ros2_android/deps/ORB_SLAM3/src/Tracking.cc.o:(ORB_SLAM3::Tracking::Relocalization())
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+gmake[2]: *** [CMakeFiles/k40_slam.dir/build.make:1165: lib/libk40_slam.so] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/k40_slam.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2

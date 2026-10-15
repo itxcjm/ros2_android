@@ -1,0 +1,167 @@
+CMake Deprecation Warning at /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake:34 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /usr/local/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:146 (include)
+  CMakeLists.txt:2 (project)
+
+
+CMake Deprecation Warning at /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android-legacy.toolchain.cmake:34 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake:54 (include)
+  /usr/local/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:146 (include)
+  CMakeLists.txt:2 (project)
+
+
+CMake Deprecation Warning at /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake:34 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  build/CMakeFiles/3.31.6/CMakeSystem.cmake:6 (include)
+  CMakeLists.txt:2 (project)
+
+
+-- The CXX compiler identification is Clang 14.0.6
+-- The C compiler identification is Clang 14.0.6
+-- Detecting CXX compiler ABI info
+CMake Deprecation Warning at /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake:34 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/3.31.6/CMakeSystem.cmake:6 (include)
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/CMakeScratch/TryCompile-p9oBQA/CMakeLists.txt:2 (project)
+
+
+CMake Deprecation Warning at /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android-legacy.toolchain.cmake:34 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake:54 (include)
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/3.31.6/CMakeSystem.cmake:6 (include)
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/CMakeScratch/TryCompile-p9oBQA/CMakeLists.txt:2 (project)
+
+
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+CMake Deprecation Warning at /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake:34 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/3.31.6/CMakeSystem.cmake:6 (include)
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/CMakeScratch/TryCompile-jbwbkh/CMakeLists.txt:2 (project)
+
+
+CMake Deprecation Warning at /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android-legacy.toolchain.cmake:34 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /usr/local/lib/android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake:54 (include)
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/3.31.6/CMakeSystem.cmake:6 (include)
+  /home/runner/work/ros2_android/ros2_android/slam/build/CMakeFiles/CMakeScratch/TryCompile-jbwbkh/CMakeLists.txt:2 (project)
+
+
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- ORB sources: 26, g2o sources: 32, DBoW2 sources: 6
+-- orb: Atlas.cc
+-- orb: KannalaBrandt8.cpp
+-- orb: Pinhole.cpp
+-- orb: Config.cc
+-- orb: Converter.cc
+-- orb: Frame.cc
+-- orb: FrameDrawer.cc
+-- orb: G2oTypes.cc
+-- orb: GeometricTools.cc
+-- orb: ImuTypes.cc
+-- orb: KeyFrame.cc
+-- orb: KeyFrameDatabase.cc
+-- orb: LocalMapping.cc
+-- orb: LoopClosing.cc
+-- orb: Map.cc
+-- orb: MapDrawer.cc
+-- orb: MapPoint.cc
+-- orb: ORBextractor.cc
+-- orb: ORBmatcher.cc
+-- orb: Optimizer.cc
+-- orb: Settings.cc
+-- orb: Sim3Solver.cc
+-- orb: System.cc
+-- orb: Tracking.cc
+-- orb: TwoViewReconstruction.cc
+-- orb: Viewer.cc
+-- g2o: batch_stats.cpp
+-- g2o: cache.cpp
+-- g2o: estimate_propagator.cpp
+-- g2o: factory.cpp
+-- g2o: hyper_dijkstra.cpp
+-- g2o: hyper_graph.cpp
+-- g2o: hyper_graph_action.cpp
+-- g2o: jacobian_workspace.cpp
+-- g2o: marginal_covariance_cholesky.cpp
+-- g2o: matrix_structure.cpp
+-- g2o: optimizable_graph.cpp
+-- g2o: optimization_algorithm.cpp
+-- g2o: optimization_algorithm_dogleg.cpp
+-- g2o: optimization_algorithm_factory.cpp
+-- g2o: optimization_algorithm_gauss_newton.cpp
+-- g2o: optimization_algorithm_levenberg.cpp
+-- g2o: optimization_algorithm_with_hessian.cpp
+-- g2o: parameter.cpp
+-- g2o: parameter_container.cpp
+-- g2o: robust_kernel.cpp
+-- g2o: robust_kernel_factory.cpp
+-- g2o: robust_kernel_impl.cpp
+-- g2o: solver.cpp
+-- g2o: sparse_block_matrix_test.cpp
+-- g2o: sparse_optimizer.cpp
+-- g2o: property.cpp
+-- g2o: string_tools.cpp
+-- g2o: timeutil.cpp
+-- g2o: se3mat.cpp
+-- g2o: types_sba.cpp
+-- g2o: types_seven_dof_expmap.cpp
+-- g2o: types_six_dof_expmap.cpp
+-- dbow2: BowVector.cpp
+-- dbow2: FORB.cpp
+-- dbow2: FeatureVector.cpp
+-- dbow2: ScoringObject.cpp
+-- dbow2: Random.cpp
+-- dbow2: Timestamp.cpp
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/runner/work/ros2_android/ros2_android/slam/build
