@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: orbslam3-android-${{ github.ref }}
@@ -94,7 +94,7 @@ jobs:
 
       - name: Cross-compile libk40_slam.so
         run: |
-          set -e
+          set -o pipefail
           cd slam
           cmake -S . -B build \
             -DCMAKE_TOOLCHAIN_FILE="$ANDROID_HOME/ndk/$NDK_VERSION/build/cmake/android.toolchain.cmake" \
@@ -104,14 +104,45 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release \
             -DORB_ROOT="$GITHUB_WORKSPACE/deps/ORB_SLAM3" \
             -DEIGEN_INCLUDE="$GITHUB_WORKSPACE/deps/eigen-install/include/eigen3" \
-            -DOPENCV_SDK="$GITHUB_WORKSPACE/deps/OpenCV-android-sdk"
-          cmake --build build --parallel 2
-          ls -la build/lib
+            -DOPENCV_SDK="$GITHUB_WORKSPACE/deps/OpenCV-android-sdk" 2>&1 | tee configure.log
+          cmake --build build --parallel 4 2>&1 | tee build.log
+          find build -name "libk40_slam.so" -o -name "*.so" | head -20
 
       - name: Upload native SLAM library
         uses: actions/upload-artifact@v4
         with:
           name: orbslam3-k40-arm64
-          path: slam/build/lib/libk40_slam.so
+          path: slam/build/**/*.so
           if-no-files-found: error
           retention-days: 14
+
+      # 把构建日志推回仓库，方便直接读取失败原因而不必打开网页日志。
+      - name: Publish build log
+        if: always()
+        run: |
+          set +e
+          {
+            echo "# ORB-SLAM3 build report"
+            echo
+            echo '## configure'
+            echo '```'
+            tail -n 120 slam/configure.log 2>/dev/null
+            echo '```'
+            echo
+            echo '## build'
+            echo '```'
+            tail -n 250 slam/build.log 2>/dev/null
+            echo '```'
+            echo
+            echo '## shared objects'
+            echo '```'
+            find slam/build -name '*.so' 2>/dev/null | head -20
+            echo '```'
+          } > build-report.md
+          cat build-report.md >> "$GITHUB_STEP_SUMMARY"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B ci-orbslam3-log
+          git add -f build-report.md
+          git commit -m "build report: ${{ github.run_number }}" || true
+          git push origin HEAD:refs/heads/ci-orbslam3-log --force || true
