@@ -1,0 +1,117 @@
+name: Build ORB-SLAM3 Android runtime
+
+on:
+  push:
+    branches: [codex/orbslam3-android]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: orbslam3-android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  arm64-slam:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      NDK_VERSION: 25.1.8937393
+      OPENCV_VERSION: 4.8.0
+    steps:
+      - name: Check out SLAM build sources
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Cache Android SDK toolchain
+        id: android-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/local/lib/android/sdk/ndk/25.1.8937393
+            /usr/local/lib/android/sdk/build-tools/33.0.0
+            /usr/local/lib/android/sdk/platforms/android-30
+          key: android-sdk-linux-ndk25.1-api30-buildtools33-v1
+
+      - name: Install Android SDK packages
+        if: steps.android-cache.outputs.cache-hit != 'true'
+        run: |
+          SDK_ROOT="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
+          SDKMANAGER="$(find "$SDK_ROOT/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-30" "build-tools;33.0.0" "ndk;25.1.8937393"
+
+      - name: Save Android SDK cache after install
+        if: steps.android-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /usr/local/lib/android/sdk/ndk/25.1.8937393
+            /usr/local/lib/android/sdk/build-tools/33.0.0
+            /usr/local/lib/android/sdk/platforms/android-30
+          key: android-sdk-linux-ndk25.1-api30-buildtools33-v1
+
+      - name: Set Android SDK root
+        run: echo "ANDROID_HOME=${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}" >> "$GITHUB_ENV"
+
+      - name: Cache SLAM dependencies
+        id: deps-cache
+        uses: actions/cache@v4
+        with:
+          path: deps
+          key: orbslam3-deps-opencv4.8-eigen3.4-v1
+
+      - name: Fetch OpenCV, Eigen and ORB-SLAM3 sources
+        run: |
+          set -e
+          mkdir -p deps
+          cd deps
+          if [ ! -d OpenCV-android-sdk ]; then
+            curl -sSL -o opencv.zip "https://github.com/opencv/opencv/releases/download/${OPENCV_VERSION}/opencv-${OPENCV_VERSION}-android-sdk.zip"
+            unzip -q opencv.zip
+            rm opencv.zip
+          fi
+          if [ ! -d eigen-install ]; then
+            curl -sSL -o eigen.tar.gz https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz
+            tar -xzf eigen.tar.gz
+            cmake -S eigen-3.4.0 -B eigen-build -DCMAKE_INSTALL_PREFIX="$PWD/eigen-install"
+            cmake --build eigen-build --target install
+            rm -rf eigen-3.4.0 eigen-build eigen.tar.gz
+          fi
+          if [ ! -d ORB_SLAM3 ]; then
+            git clone --depth 1 https://github.com/UZ-SLAMLab/ORB_SLAM3.git ORB_SLAM3
+          fi
+          ls -d OpenCV-android-sdk eigen-install ORB_SLAM3
+
+      - name: Save SLAM dependency cache
+        if: steps.deps-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: deps
+          key: orbslam3-deps-opencv4.8-eigen3.4-v1
+
+      - name: Cross-compile libk40_slam.so
+        run: |
+          set -e
+          cd slam
+          cmake -S . -B build \
+            -DCMAKE_TOOLCHAIN_FILE="$ANDROID_HOME/ndk/$NDK_VERSION/build/cmake/android.toolchain.cmake" \
+            -DANDROID_ABI=arm64-v8a \
+            -DANDROID_PLATFORM=android-29 \
+            -DANDROID_STL=c++_static \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DORB_ROOT="$GITHUB_WORKSPACE/deps/ORB_SLAM3" \
+            -DEIGEN_INCLUDE="$GITHUB_WORKSPACE/deps/eigen-install/include/eigen3" \
+            -DOPENCV_SDK="$GITHUB_WORKSPACE/deps/OpenCV-android-sdk"
+          cmake --build build --parallel 2
+          ls -la build/lib
+
+      - name: Upload native SLAM library
+        uses: actions/upload-artifact@v4
+        with:
+          name: orbslam3-k40-arm64
+          path: slam/build/lib/libk40_slam.so
+          if-no-files-found: error
+          retention-days: 14
