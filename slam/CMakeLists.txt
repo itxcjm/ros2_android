@@ -25,10 +25,18 @@ include_directories(
   ${ORB_ROOT}/Thirdparty/DBoW2
   ${ORB_ROOT}/Thirdparty/g2o
   ${EIGEN_INCLUDE}
+  ${EIGEN_INCLUDE}/..
   ${OPENCV_SDK}/sdk/native/jni/include
 )
 
 add_compile_options(-O3 -fPIC -fexceptions -frtti -w)
+# Repeated cross-compiles reuse object files through ccache when the runner provides it.
+find_program(CCACHE_PROGRAM ccache)
+if(CCACHE_PROGRAM)
+  set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+  set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+  message(STATUS "Using ccache: ${CCACHE_PROGRAM}")
+endif()
 # ORB-SLAM3 headers use boost::serialization without including it themselves.
 add_compile_options(-include ${CMAKE_CURRENT_SOURCE_DIR}/stub/prelude.h)
 add_definitions(-DCOMPILEDWITHC11)

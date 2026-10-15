@@ -56,6 +56,14 @@ jobs:
       - name: Set Android SDK root
         run: echo "ANDROID_HOME=${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}" >> "$GITHUB_ENV"
 
+      - name: Cache compiler objects
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ccache
+          key: orbslam3-ccache-${{ github.run_id }}
+          restore-keys: |
+            orbslam3-ccache-
+
       - name: Cache SLAM dependencies
         id: deps-cache
         uses: actions/cache@v4
