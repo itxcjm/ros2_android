@@ -65,6 +65,12 @@ jobs:
       - name: Set Android SDK root
         run: echo "ANDROID_HOME=${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}" >> "$GITHUB_ENV"
 
+      - name: Cache Python package downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ros2-python-wheels-v1
+
       - name: Install ROS build prerequisites
         run: |
           sudo apt-get update
@@ -95,10 +101,26 @@ jobs:
           path: deps
           key: ros2-humble-sources-${{ hashFiles('ros.repos') }}
 
+      - name: Restore native build cache
+        uses: actions/cache/restore@v4
+        with:
+          path: build
+          key: ros2-native-${{ runner.os }}-${{ hashFiles('ros.repos') }}-${{ github.run_id }}
+          restore-keys: |
+            ros2-native-${{ runner.os }}-${{ hashFiles('ros.repos') }}-
+
       - name: Cross-compile runtime and reference APK
+        id: native-build
         run: |
           cmake -S . -B build -DANDROID_HOME="$ANDROID_HOME" -DPATH_TO_KEYSTORE="$HOME/.android/debug.keystore"
           cmake --build build --parallel 2
+
+      - name: Save native build cache, including partial builds
+        if: always() && steps.native-build.outcome != 'skipped'
+        uses: actions/cache/save@v4
+        with:
+          path: build
+          key: ros2-native-${{ runner.os }}-${{ hashFiles('ros.repos') }}-${{ github.run_id }}
 
       - name: Upload native libraries and reference APK
         if: success()
