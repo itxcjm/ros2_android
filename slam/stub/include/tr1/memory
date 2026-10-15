@@ -1,0 +1,10 @@
+// 同上：robust_kernel.h 仍引用 tr1 的 shared_ptr。
+#pragma once
+#include <memory>
+namespace std {
+namespace tr1 {
+using std::shared_ptr;
+using std::weak_ptr;
+using std::make_shared;
+}
+}

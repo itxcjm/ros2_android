@@ -1,0 +1,8 @@
+// g2o 仍使用 C++03 的 tr1 容器，Android NDK 未提供，这里映射到 C++11 容器。
+#pragma once
+#include <unordered_map>
+namespace std {
+namespace tr1 {
+using std::unordered_map;
+}
+}
