@@ -58,6 +58,18 @@ if(NOT android_apksigner)
   message(FATAL_ERROR "Failed to find apksigner - is ANDROID_HOME correct?")
 endif()
 
+# GitHub runners contain multiple SDK versions; use the versions installed by CI.
+set(android_toolchain "${ANDROID_HOME}/ndk/25.1.8937393/build/cmake/android.toolchain.cmake")
+set(android_aapt2 "${ANDROID_HOME}/build-tools/33.0.0/aapt2")
+set(android_zipalign "${ANDROID_HOME}/build-tools/33.0.0/zipalign")
+set(android_apksigner "${ANDROID_HOME}/build-tools/33.0.0/apksigner")
+set(android_jar "${ANDROID_HOME}/platforms/android-${minimum_target_sdk}/android.jar")
+foreach(required_file android_toolchain android_aapt2 android_zipalign android_apksigner android_jar)
+  if(NOT EXISTS "${${required_file}}")
+    message(FATAL_ERROR "Missing Android SDK file: ${${required_file}}")
+  endif()
+endforeach()
+
 set(ANDROID_ABI arm64-v8a)
 
 set(android_cmake_args 
