@@ -149,7 +149,8 @@ jobs:
             echo
             echo '## configure'
             echo '```'
-            tail -n 120 slam/configure.log 2>/dev/null
+            grep -E "sources:|^orb:|^g2o:|^dbow2:" slam/configure.log 2>/dev/null
+            tail -n 40 slam/configure.log 2>/dev/null
             echo '```'
             echo
             echo '## build'

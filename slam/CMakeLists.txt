@@ -46,8 +46,25 @@ file(WRITE ${ORB_ROOT}/Thirdparty/g2o/config.h
 "#ifndef G2O_CONFIG_H\n#define G2O_CONFIG_H\n#endif\n")
 
 file(GLOB_RECURSE G2O_SOURCES ${ORB_ROOT}/Thirdparty/g2o/g2o/*.cpp)
-file(GLOB_RECURSE DBOW2_SOURCES ${ORB_ROOT}/Thirdparty/DBoW2/DBoW2/*.cpp)
+file(GLOB_RECURSE DBOW2_SOURCES ${ORB_ROOT}/Thirdparty/DBoW2/DBoW2/*.cpp ${ORB_ROOT}/Thirdparty/DBoW2/DUtils/*.cpp)
 file(GLOB ORB_SOURCES ${ORB_ROOT}/src/*.cc ${ORB_ROOT}/src/CameraModels/*.cpp)
+
+list(LENGTH ORB_SOURCES ORB_SOURCE_COUNT)
+list(LENGTH G2O_SOURCES G2O_SOURCE_COUNT)
+list(LENGTH DBOW2_SOURCES DBOW2_SOURCE_COUNT)
+message(STATUS "ORB sources: ${ORB_SOURCE_COUNT}, g2o sources: ${G2O_SOURCE_COUNT}, DBoW2 sources: ${DBOW2_SOURCE_COUNT}")
+foreach(source ${ORB_SOURCES})
+  get_filename_component(name ${source} NAME)
+  message(STATUS "orb: ${name}")
+endforeach()
+foreach(source ${G2O_SOURCES})
+  get_filename_component(name ${source} NAME)
+  message(STATUS "g2o: ${name}")
+endforeach()
+foreach(source ${DBOW2_SOURCES})
+  get_filename_component(name ${source} NAME)
+  message(STATUS "dbow2: ${name}")
+endforeach()
 
 # Real Viewer.cc and MapDrawer.cc need desktop OpenGL; stub_no_viewer.cc replaces them.
 list(REMOVE_ITEM ORB_SOURCES
