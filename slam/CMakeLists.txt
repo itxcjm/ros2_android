@@ -29,6 +29,8 @@ include_directories(
 )
 
 add_compile_options(-O3 -fPIC -fexceptions -frtti -w)
+# ORB-SLAM3 headers use boost::serialization without including it themselves.
+add_compile_options(-include ${CMAKE_CURRENT_SOURCE_DIR}/stub/prelude.h)
 add_definitions(-DCOMPILEDWITHC11)
 
 # g2o expects a generated config.h; the ORB-SLAM3 build only needs the guards.
