@@ -47,7 +47,8 @@ file(WRITE ${ORB_ROOT}/Thirdparty/g2o/config.h
 
 file(GLOB_RECURSE G2O_SOURCES ${ORB_ROOT}/Thirdparty/g2o/g2o/*.cpp)
 file(GLOB_RECURSE DBOW2_SOURCES ${ORB_ROOT}/Thirdparty/DBoW2/DBoW2/*.cpp ${ORB_ROOT}/Thirdparty/DBoW2/DUtils/*.cpp)
-file(GLOB ORB_SOURCES ${ORB_ROOT}/src/*.cc ${ORB_ROOT}/src/CameraModels/*.cpp)
+# 注意：MLPnPsolver.cpp 与 OptimizableTypes.cpp 是 .cpp，不能只匹配 *.cc。
+file(GLOB ORB_SOURCES ${ORB_ROOT}/src/*.cc ${ORB_ROOT}/src/*.cpp ${ORB_ROOT}/src/CameraModels/*.cpp)
 
 list(LENGTH ORB_SOURCES ORB_SOURCE_COUNT)
 list(LENGTH G2O_SOURCES G2O_SOURCE_COUNT)
@@ -70,6 +71,8 @@ endforeach()
 list(REMOVE_ITEM ORB_SOURCES
   ${ORB_ROOT}/src/Viewer.cc
   ${ORB_ROOT}/src/MapDrawer.cc)
+list(LENGTH ORB_SOURCES ORB_SOURCE_COUNT)
+message(STATUS "ORB sources after removal: ${ORB_SOURCE_COUNT}")
 
 add_library(k40_slam SHARED
   ${ORB_SOURCES}
