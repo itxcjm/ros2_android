@@ -153,9 +153,19 @@ jobs:
             tail -n 40 slam/configure.log 2>/dev/null
             echo '```'
             echo
-            echo '## build'
+            echo '## compiled objects'
             echo '```'
-            tail -n 250 slam/build.log 2>/dev/null
+            grep -oE "CMakeFiles/k40_slam.dir/[^ ]+\.o" slam/build.log 2>/dev/null | sort -u
+            echo '```'
+            echo
+            echo '## errors'
+            echo '```'
+            grep -nE "error:|Error [0-9]+|undefined symbol" slam/build.log 2>/dev/null | head -40
+            echo '```'
+            echo
+            echo '## build tail'
+            echo '```'
+            tail -n 40 slam/build.log 2>/dev/null
             echo '```'
             echo
             echo '## shared objects'
