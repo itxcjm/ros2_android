@@ -68,6 +68,6 @@ set_property(TARGET android-ros PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
 
 # Workaround https://gitlab.kitware.com/cmake/cmake/-/issues/21772
 # TODO(sloretz) only do this if CMake version is less than 3.20
-STRING(REGEX REPLACE "-fuse-ld=gold" "" CMAKE_CXX_LINK_OPTIONS_IPO ${CMAKE_CXX_LINK_OPTIONS_IPO})
+STRING(REGEX REPLACE "-fuse-ld=gold" "" CMAKE_CXX_LINK_OPTIONS_IPO "${CMAKE_CXX_LINK_OPTIONS_IPO}")
 
 install(TARGETS android-ros DESTINATION lib)
