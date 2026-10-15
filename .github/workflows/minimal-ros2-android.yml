@@ -30,7 +30,18 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Cache Android SDK toolchain
+        id: android-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/local/lib/android/sdk/ndk/25.1.8937393
+            /usr/local/lib/android/sdk/build-tools/33.0.0
+            /usr/local/lib/android/sdk/platforms/android-30
+          key: android-sdk-linux-ndk25.1-api30-buildtools33-v1
+
       - name: Install Android SDK packages
+        if: steps.android-cache.outputs.cache-hit != 'true'
         run: |
           SDK_ROOT="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
           SDKMANAGER="$(find "$SDK_ROOT/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
@@ -50,7 +61,15 @@ jobs:
           mkdir -p "$HOME/.android"
           keytool -genkeypair -keystore "$HOME/.android/debug.keystore" -storepass android -keypass android -alias adb_debug_key -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
 
+      - name: Cache ROS 2 source dependencies
+        id: ros-cache
+        uses: actions/cache@v4
+        with:
+          path: deps
+          key: ros2-humble-sources-${{ hashFiles('ros.repos') }}
+
       - name: Fetch public ROS 2 Humble dependencies
+        if: steps.ros-cache.outputs.cache-hit != 'true'
         run: vcs import --input ros.repos deps/
 
       - name: Cross-compile runtime and reference APK
