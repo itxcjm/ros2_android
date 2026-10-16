@@ -116,6 +116,17 @@ jobs:
           cmake --build build --parallel 4 2>&1 | tee build.log
           find build -name "libk40_slam.so" -o -name "*.so" | head -20
 
+      - name: Strip library and verify JNI exports
+        run: |
+          set -e
+          BIN="$GITHUB_WORKSPACE/slam/build/lib/libk40_slam.so"
+          TOOLS="$ANDROID_HOME/ndk/$NDK_VERSION/toolchains/llvm/prebuilt/linux-x86_64/bin"
+          "$TOOLS/llvm-strip" --strip-all "$BIN"
+          for method in nativeInit nativeShutdown nativeReset nativePushImu nativeTrackGray nativeGetPose nativeGetMapPoints nativeGetStatusText; do
+            "$TOOLS/llvm-nm" -D "$BIN" | grep -q "Java_net_moefire_slam_monitor_SlamNativeBridge_$method$"
+          done
+          ls -lh "$BIN"
+
       - name: Upload native SLAM library
         uses: actions/upload-artifact@v4
         with:
@@ -135,10 +146,11 @@ jobs:
           ls -la ci-artifacts
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B ci-orbslam3-bin
+          test "$(stat -c%s ci-artifacts/libk40_slam.so)" -lt 100000000
+          git checkout -B ci-orbslam3-bin "$GITHUB_SHA"
           git add -f ci-artifacts/libk40_slam.so
-          git commit -m "libk40_slam.so run ${{ github.run_number }}" || echo "commit did not happen"
-          git push origin HEAD:refs/heads/ci-orbslam3-bin --force || echo "push failed"
+          git commit -m "libk40_slam.so run ${{ github.run_number }}"
+          git push origin HEAD:refs/heads/ci-orbslam3-bin --force
 
       # 把构建日志推回仓库，方便直接读取失败原因而不必打开网页日志。
       - name: Publish build log
@@ -177,7 +189,7 @@ jobs:
           cat build-report.md >> "$GITHUB_STEP_SUMMARY"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B ci-orbslam3-log
+          git checkout -B ci-orbslam3-log "$GITHUB_SHA"
           git add -f build-report.md slam/build.log slam/configure.log
           git commit -m "build report: ${{ github.run_number }}" || true
           git push origin HEAD:refs/heads/ci-orbslam3-log --force || true
