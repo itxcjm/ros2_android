@@ -97,14 +97,7 @@ jobs:
           ls -d OpenCV-android-sdk eigen-install ORB_SLAM3
 
       - name: Patch ORB-SLAM3 map access
-        run: |
-          PATCH="$GITHUB_WORKSPACE/slam/patches/all-map-points.patch"
-          if git -C deps/ORB_SLAM3 apply --reverse --check "$PATCH"; then
-            echo "Map access patch already present"
-          else
-            git -C deps/ORB_SLAM3 apply --check "$PATCH"
-            git -C deps/ORB_SLAM3 apply "$PATCH"
-          fi
+        run: python3 slam/patches/expose_map_points.py deps/ORB_SLAM3
 
       - name: Save SLAM dependency cache
         if: steps.deps-cache.outputs.cache-hit != 'true'
