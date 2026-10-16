@@ -5,9 +5,6 @@ on:
     branches: [codex/orbslam3-android]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 concurrency:
   group: orbslam3-android-${{ github.ref }}
   cancel-in-progress: true
@@ -134,62 +131,3 @@ jobs:
           path: slam/build/**/*.so
           if-no-files-found: error
           retention-days: 14
-
-      # 产物推回仓库分支，方便直接取用，不必再走 artifact API。
-      - name: Publish library
-        if: success()
-        run: |
-          set -x
-          mkdir -p ci-artifacts
-          find "$GITHUB_WORKSPACE/slam/build" -name 'libk40_slam.so' -print
-          cp "$GITHUB_WORKSPACE/slam/build/lib/libk40_slam.so" ci-artifacts/libk40_slam.so
-          ls -la ci-artifacts
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          test "$(stat -c%s ci-artifacts/libk40_slam.so)" -lt 100000000
-          git checkout -B ci-orbslam3-bin "$GITHUB_SHA"
-          git add -f ci-artifacts/libk40_slam.so
-          git commit -m "libk40_slam.so run ${{ github.run_number }}"
-          git push origin HEAD:refs/heads/ci-orbslam3-bin --force
-
-      # 把构建日志推回仓库，方便直接读取失败原因而不必打开网页日志。
-      - name: Publish build log
-        if: always()
-        run: |
-          set +e
-          {
-            echo "# ORB-SLAM3 build report"
-            echo
-            echo '## configure'
-            echo '```'
-            grep -E "sources:|^orb:|^g2o:|^dbow2:" slam/configure.log 2>/dev/null
-            tail -n 40 slam/configure.log 2>/dev/null
-            echo '```'
-            echo
-            echo '## compiled objects'
-            echo '```'
-            grep -oE "CMakeFiles/k40_slam.dir/[^ ]+\.o" slam/build.log 2>/dev/null | sort -u
-            echo '```'
-            echo
-            echo '## errors'
-            echo '```'
-            grep -nE "error:|Error [0-9]+|undefined symbol" slam/build.log 2>/dev/null | head -40
-            echo '```'
-            echo
-            echo '## build tail'
-            echo '```'
-            tail -n 40 slam/build.log 2>/dev/null
-            echo '```'
-            echo
-            echo '## shared objects'
-            echo '```'
-            find slam/build -name '*.so' 2>/dev/null | head -20
-            echo '```'
-          } > build-report.md
-          cat build-report.md >> "$GITHUB_STEP_SUMMARY"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B ci-orbslam3-log "$GITHUB_SHA"
-          git add -f build-report.md slam/build.log slam/configure.log
-          git commit -m "build report: ${{ github.run_number }}" || true
-          git push origin HEAD:refs/heads/ci-orbslam3-log --force || true
