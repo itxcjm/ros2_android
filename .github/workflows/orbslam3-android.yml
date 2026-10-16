@@ -5,6 +5,9 @@ on:
     branches: [codex/orbslam3-android]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: orbslam3-android-${{ github.ref }}
   cancel-in-progress: true
@@ -53,6 +56,9 @@ jobs:
       - name: Set Android SDK root
         run: echo "ANDROID_HOME=${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}" >> "$GITHUB_ENV"
 
+      - name: Install ccache
+        run: command -v ccache || (sudo apt-get update && sudo apt-get install -y ccache)
+
       - name: Cache compiler objects
         uses: actions/cache@v4
         with:
@@ -97,7 +103,16 @@ jobs:
           path: deps
           key: orbslam3-deps-opencv4.8-eigen3.4-v1
 
+      - name: Restore native build cache
+        uses: actions/cache/restore@v4
+        with:
+          path: slam/build
+          key: orbslam3-native-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            orbslam3-native-${{ runner.os }}-
+
       - name: Cross-compile libk40_slam.so
+        id: native-build
         run: |
           set -o pipefail
           cd slam
@@ -107,11 +122,20 @@ jobs:
             -DANDROID_PLATFORM=android-29 \
             -DANDROID_STL=c++_static \
             -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DORB_ROOT="$GITHUB_WORKSPACE/deps/ORB_SLAM3" \
             -DEIGEN_INCLUDE="$GITHUB_WORKSPACE/deps/eigen-install/include/eigen3" \
             -DOPENCV_SDK="$GITHUB_WORKSPACE/deps/OpenCV-android-sdk" 2>&1 | tee configure.log
           cmake --build build --parallel 4 2>&1 | tee build.log
           find build -name "libk40_slam.so" -o -name "*.so" | head -20
+
+      - name: Save native build cache
+        if: always() && steps.native-build.outcome != 'skipped'
+        uses: actions/cache/save@v4
+        with:
+          path: slam/build
+          key: orbslam3-native-${{ runner.os }}-${{ github.run_id }}
 
       - name: Strip library and verify JNI exports
         run: |
