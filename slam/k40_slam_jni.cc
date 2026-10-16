@@ -195,7 +195,7 @@ Java_net_moefire_slam_monitor_SlamNativeBridge_nativeGetPose(JNIEnv *env, jclass
   return g_state;
 }
 
-// out receives xyz triples of the map points tracked in the current frame.
+// out receives xyz triples from all valid points in the active ORB-SLAM3 map.
 JNIEXPORT jint JNICALL
 Java_net_moefire_slam_monitor_SlamNativeBridge_nativeGetMapPoints(JNIEnv *env, jclass,
     jfloatArray out) {
@@ -206,13 +206,13 @@ Java_net_moefire_slam_monitor_SlamNativeBridge_nativeGetMapPoints(JNIEnv *env, j
   }
   if (!slam || !out) return 0;
 
-  std::vector<ORB_SLAM3::MapPoint *> points = slam->GetTrackedMapPoints();
+  std::vector<ORB_SLAM3::MapPoint *> points = slam->GetAllMapPoints();
   const jsize capacity = env->GetArrayLength(out) / 3;
-  const size_t n = std::min(static_cast<size_t>(capacity), points.size());
+  const size_t stride = std::max<size_t>(1, (points.size() + capacity - 1) / capacity);
 
   std::vector<jfloat> values;
-  values.reserve(n * 3);
-  for (size_t i = 0; i < n; ++i) {
+  values.reserve(std::min(static_cast<size_t>(capacity), points.size()) * 3);
+  for (size_t i = 0; i < points.size() && values.size() / 3 < static_cast<size_t>(capacity); i += stride) {
     ORB_SLAM3::MapPoint *p = points[i];
     if (!p || p->isBad()) continue;
     const Eigen::Vector3f w = p->GetWorldPos();
