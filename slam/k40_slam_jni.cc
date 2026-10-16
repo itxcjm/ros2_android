@@ -208,6 +208,7 @@ Java_net_moefire_slam_monitor_SlamNativeBridge_nativeGetMapPoints(JNIEnv *env, j
 
   std::vector<ORB_SLAM3::MapPoint *> points = slam->GetAllMapPoints();
   const jsize capacity = env->GetArrayLength(out) / 3;
+  if (capacity <= 0) return 0;
   const size_t stride = std::max<size_t>(1, (points.size() + capacity - 1) / capacity);
 
   std::vector<jfloat> values;
